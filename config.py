@@ -20,12 +20,11 @@ class Config:
     UN_FINISHED_PROGRESS_STR = os.environ.get('UN_FINISHED_PROGRESS_STR','○')
     PROGRESSBAR_LENGTH = int(os.environ.get('PROGRESSBAR_LENGTH', 25))
     JOIN_CHANNEL_STR = os.environ.get('JOIN_CHANNEL_STR',
-        "Merhaba / Hi {}\n\n" + \
-        "🇬🇧 First subscribe my channel from button, try again.\n" + \
-        "🇹🇷 Önce butondan kanala abone ol, tekrar dene.")
+        " Hi {}\n\n" + \
+        "🇬🇧 First subscribe my channel from button, try again.")
     YOU_ARE_BANNED_STR = os.environ.get('YOU_ARE_BANNED_STR',
-        "🇬🇧 You are Banned to use me.\n🇹🇷 Banlanmışsın ezik.\n\nDestek / Support: {}")
-    JOIN_BUTTON_STR = os.environ.get('JOIN_BUTTON_STR', "🇬🇧 Join / 🇹🇷 Katıl")
+        "🇬🇧 You are Banned to use me. Support: {}")
+    JOIN_BUTTON_STR = os.environ.get('JOIN_BUTTON_STR', "🇬🇧 Join")
     
     # fixing vars
     if FORCE_SUBSCRIBE_CHANNEL == "" or FORCE_SUBSCRIBE_CHANNEL == " " or len(str(FORCE_SUBSCRIBE_CHANNEL)) == 0: FORCE_SUBSCRIBE_CHANNEL = None # bu satıra dokunmayın.
