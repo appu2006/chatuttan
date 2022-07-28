@@ -9,7 +9,7 @@ Demo in telegram: [@ChatSizeBot](https://t.me/ChatSizeBot)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/HuzunluArtemis/ChatSizeBot)
 
 ### Railway
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/VaCFm8?referralCode=akash2006)
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/09aFxe)
 
 ## Features
 
