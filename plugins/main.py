@@ -180,6 +180,6 @@ def welcome(_, message: Message):
     if not AuthUserCheck(message): return
     if ForceSub(message) == 400: return
     te = " Hi. Send a channel/group id and I will calculate the full size of all files." \
-        "\nClick the last message in the channel / group, copy the message link, paste it to me." \
-        f"\n\n**@{Config.CHANNEL_OR_CONTACT}**"
+        "\nClick the last message in the channel / group, copy the message link, paste it to me." 
+        
     message.reply_text(te, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
