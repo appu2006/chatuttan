@@ -28,9 +28,8 @@ def run_task(gelen: Message, duzenlenecek: Message):
             match = regex.match(gelen.text)
             if not match:
                 duzenlenecek.edit_text(
-                    '🇹🇷 Kanaldaki son mesajı iletin ya da son mesaj linkini gönderin.' \
-                    '\n🇬🇧 Forward the last message on the channel or send the last message link.' \
-                    '\nÖrnek / Example: `https://t.me/c/6262626/24234234`'
+                    ' Forward the last message on the channel or send the last message link.' \
+                    '\Example: `https://t.me/c/6262626/24234234`'
                     , disable_web_page_preview=True
                 )
                 return on_task_complete()
@@ -43,8 +42,7 @@ def run_task(gelen: Message, duzenlenecek: Message):
             chat_id = gelen.forward_from_chat.username or gelen.forward_from_chat.id
         else:
             duzenlenecek.edit_text(
-                    '🇹🇷 Bir kanal ya da grup olmalı.' \
-                    '\n🇬🇧 Must be a channel or group.'
+                    ' Must be a channel or group.'
                     , disable_web_page_preview=True
                 )
             return on_task_complete()
@@ -53,8 +51,7 @@ def run_task(gelen: Message, duzenlenecek: Message):
             gotchat:Chat = duzenlenecek._client.get_chat(chat_id)
         except (ChannelInvalid, ChannelPrivate, ChatAdminRequired):
             duzenlenecek.edit_text(
-                '🇹🇷 Beni kanalınıza/grubunuza yönetici olarak eklemelisiniz.' \
-                    '\n🇬🇧 You must add me to your channel/group as admin.'
+                ' You must add me to your channel/group as admin.'
                     , disable_web_page_preview=True
             )
             return on_task_complete()
@@ -67,12 +64,11 @@ def run_task(gelen: Message, duzenlenecek: Message):
             
         if not gotchat:
             duzenlenecek.edit_text(
-                '🇹🇷 Beni kanalınıza/grubunuza yönetici olarak eklemelisiniz.' \
-                    '\n🇬🇧 You must add me to your channel/group as admin.'
+                'You must add me to your channel/group as admin.'
                     , disable_web_page_preview=True
             )
             return on_task_complete()
-        infochat = f"💚 **Chat Info / Çet Bilgileri:**" \
+        infochat = f"💚 **Chat Info :**" \
                 f"\n\nName: `{gotchat.title}`" \
                 f"\nUsername: @{gotchat.username}" \
                 f"\nChat ID: `{gotchat.id}`" \
@@ -94,7 +90,7 @@ def run_task(gelen: Message, duzenlenecek: Message):
             if current % 30 == 0:
                 try:
                     txt = f"**% {'{:.3f}'.format(current * 100 / total)}** {get_progressbar(current, total)}" \
-                        f"\n\n{infochat}\n\n[💜](https://huzunluartemis.github.io/ChatSizeBot/) **Process / İşlem:**" \
+                        f"\n\n{infochat}\n\n[💜](https://t.me/Powerupdate) **Process :**" \
                         f"\n\nCalculated Total Size: `{humanbytes(total_calculated_size)}` (`{str(total_calculated_size)} bytes`)" \
                         f"\nProcessed Messages: `{current}`" \
                         f"\nTo Be Processed: `{total - current}`" \
@@ -145,7 +141,7 @@ def run_task(gelen: Message, duzenlenecek: Message):
         #
         if last_msg_id <= 30:
             txt = f"**% {'{:.3f}'.format(current * 100 / total)}** {get_progressbar(current, total)}" \
-                f"\n\n{infochat}\n\n[💜](https://huzunluartemis.github.io/ChatSizeBot/) **Process / İşlem:**" \
+                f"\n\n{infochat}\n\n[💜](https://t.me/Powerupdate) **Process :**" \
                 f"\n\nCalculated Total Size: `{humanbytes(total_calculated_size)}` (`{str(total_calculated_size)} bytes`)" \
                 f"\nProcessed Messages: `{current}`" \
                 f"\nDeleted Messages: `{empty}`" \
@@ -155,7 +151,7 @@ def run_task(gelen: Message, duzenlenecek: Message):
                 f"\nPassed Time: `{TimeFormatter(time.time() - start_time)}`" \
                 f'\nBot Uptime: `{TimeFormatter(time.time() - botStartTime)}`'
         duzenlenecek.edit_text(
-            f"{txt}\n\n[✅](https://t.me/{Config.CHANNEL_OR_CONTACT}) **Finished / Bitti**",
+            f"{txt}\n\n[✅](https://t.me/{Config.CHANNEL_OR_CONTACT}) **Finished**",
             parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True
         )
     except Exception as e:
@@ -183,9 +179,7 @@ def handler(_, message: Message):
 def welcome(_, message: Message):
     if not AuthUserCheck(message): return
     if ForceSub(message) == 400: return
-    te = "🇹🇷 Esenlikler. Bir kanal/grup kimliği gönder, tüm dosyaların toplam boyutunu hesaplaycağım." \
-        "\nKanaldaki / gruptaki son mesaja tıkla, mesaj bağlantısını kopyala, bana yapıştır." \
-        "\n\n🇬🇧 Hi. Send a channel/group id and I will calculate the full size of all files." \
+    te = " Hi. Send a channel/group id and I will calculate the full size of all files." \
         "\nClick the last message in the channel / group, copy the message link, paste it to me." \
         f"\n\n**@{Config.CHANNEL_OR_CONTACT}**"
     message.reply_text(te, parse_mode=ParseMode.MARKDOWN, disable_web_page_preview=True)
